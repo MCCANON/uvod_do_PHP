@@ -8,65 +8,144 @@
 </head>
 <body>
   <div class="wrapper">
+
     <div class="hero">
         <p class="hero-badge">Referencie</p>
         <h1 class="hero-title">Skúsenosti, ktoré hovoria za nás</h1>
         <div class="hero-pill">
-          <span> Pozri sa, ako webBox pomáha firmám fungovať<br>bez zbytočného papierovania a stráty času</span>
+          <span>Pozri sa, ako webBox pomáha firmám fungovať<br>bez zbytočného papierovania a stráty času</span>
         </div>
-        <div class ="hero-pill">
+        <div class="hero-pill">
             <img src="https://cdn.simpleicons.org/ikea/888888" height="44" alt="IKEA" />
+        </div>
     </div>
-    </div>
-    <div class="cards-wrap">
-        <div>
+    <div class="slider">
+      <div class="slide active">
+        <div class="cards-wrap">
             <p class="card-title">Ladislav Chromočík</p>
             <p class="card-subtitle">CEO</p>
-            <p class="card-desc">V našej spoločnosti systém spracováva zložité<br>stredanie zmien, sleduje priradenia k výrobným linkám<br>a sravuje bezpečnostné predpisy.</p>
-            <img class="card-icon" src="csm_witzenmann_ba51e91c03.png" height="50" alt="Witzenmann" />
+            <p class="card-desc">V našej spoločnosti systém spracováva zložité</p>
+            <p class="card-desc2">stredanie zmien, sleduje priradenia k výrobným linkám<br>a sravuje bezpečnostné predpisy.</p>
+            <img class="card-icon" src="csm_witzenmann_ba51e91c03.png" height="24" alt="Witzenmann" />
         </div>
-    </div>
-<div class="stats">
-  <div class="stat">
-    <span class="stat-number">1 200+</span>
-    <span class="stat-label">Ušetrených hodín mesačne</span>
-  </div>
-  <div class="stat">
-    <span class="stat-number">400+</span>
-    <span class="stat-label">Používateľov systému</span>
-  </div>
-  <div class="stat">
-    <span class="stat-number">4</span>
-    <span class="stat-label">webBox moduly</span>
-  </div>
-</div>
-    <div class="card-wrap">
-      <div class="cards-grid">
-        <div class="cards">
-            <p class="cards-desc">Výrazne sme znížili administratívnu a plánovanie zamestnanckých kapacít v rámci kuriérskych operácií.</p>
-            <p class="card-title">Peter Radačovský</p>
-            <p class="card-subtitle">IT & Projekt Director</p>
-            <img class="card-icon" src="https://cdn.simpleicons.org/dpd/888888" height="24" alt="DPD" />
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-number">1 200+</span>
+            <span class="stat-label">Ušetrených hodín mesačne</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">400+</span>
+            <span class="stat-label">Používateľov systému</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">4</span>
+            <span class="stat-label">webBox moduly</span>
+          </div>
+          <div class="slider-controls">
+            <button class="btn-prev" onclick="changeSlide(-1)">←</button>
+            <button class="btn-next" onclick="changeSlide(1)">→</button>
+          </div>
         </div>
-        <div class="cards">
-            <p class="cards-desc">To, čo nám predtým zabralo 133 hodím, teraz zvládneme za 16.<br>Systém je intuitívny a spoľahlivý.</p>
-            <p class="card-title">Martina Gurthová</p>
-            <p class="card-subtitle">Vedúca stravovacieho oddelenia</p>
-            <img class="card-icon" src="https://fnnitra.sk/wp-content/uploads/fn_nitra_logo.svg" height="24" alt="FN Nitra" />
+      </div>
+      <div class="slide">
+        <div class="cards-wrap">
+          <p class="card-title">Peter Radačovský</p>
+          <p class="card-subtitle">IT & Project Director</p>
+          <p class="card-desc">Výrazne sme znížili administratívnu</p>
+          <p class="card-desc2">a plánovanie zamestnanckých kapacít<br>v rámci kuriérskych operácií.</p>
+          <img class="card-icon" src="https://cdn.simpleicons.org/dpd/888888" height="24" alt="DPD" />
         </div>
-        <div class="cards">
-            <p class="cards-desc">Dochádzkový systém nám ušetrí<br>mesačne 30 hodín. Najväčšou výhodou je plánovanie trojzmennej.</p>
-            <p class="card-title">Marcela Orthová</p>
-            <p class="card-subtitle">Zástupkyňa veliteľa</p>
-            <img class="card-icon" src="MPVK.jpg" height="24" alt="MPVK" />
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-number">300+</span>
+            <span class="stat-label">Používateľov systému</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">2</span>
+            <span class="stat-label">webBox moduly</span>
+          </div>
+          <div class="slider-controls">
+            <button class="btn-prev" onclick="changeSlide(-1)">←</button>
+            <button class="btn-next" onclick="changeSlide(1)">→</button>
+          </div>
         </div>
- 
-        <div class="cards">
-            <p class="cards-desc">Riešenia na mieru sme vybrali<br>vo výberovom konaní a obsahuje dochádzuk a správu pobočiek</p>
-            <p class="card-title">Peter Ligáč</p>
-            <p class="card-subtitle">Vedúci IT oddelenia</p>
-            <img class="card-icon" src="brandfetch.com/med-art.sk" height="24" alt="MED-ART" />
+      </div>
+      <div class="slide">
+        <div class="cards-wrap">
+          <p class="card-title">Martina Guthová</p>
+          <p class="card-subtitle">Vedúca stravovacieho oddelenia</p>
+          <p class="card-desc">Systém je intuitívny a spoľahlivý.</p>
+          <p class="card-desc2">To čo nám predtým zabralo 133 hodín,<br>teraz zvládneme za 16.</p>
+          <img class="card-icon" src="https://fnnitra.sk/wp-content/uploads/fn_nitra_logo.svg" height="24" alt="FN Nitra" />
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-number">117</span>
+            <span class="stat-label">Ušetrených hodín mesačne</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">1 400+</span>
+            <span class="stat-label">Používateľov systému</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number">9 400+</span>
+            <span class="stat-label">Vydaných jedál mesačne</span>
+          </div>
+          <div class="slider-controls">
+            <button class="btn-prev" onclick="changeSlide(-1)">←</button>
+            <button class="btn-next" onclick="changeSlide(1)">→</button>
+          </div>
         </div>
       </div>
     </div>
-      
+    <div class="card-wrap">
+      <div class="cards-grid">
+        <div class="cards">
+          <p class="cards-desc">Výrazne sme znížili administratívnu a plánovanie zamestnanckých kapacít v rámci kuriérskych operácií.</p>
+          <div class="card-footer">
+            <div>
+              <p class="card-title">Peter Radačovský</p>
+              <p class="card-subtitle">IT & Projekt Director</p>
+            </div>
+            <img src="https://cdn.simpleicons.org/dpd/888888" height="24" alt="DPD" />
+          </div>
+        </div>
+        <div class="cards">
+          <p class="cards-desc">To, čo nám predtým zabralo 133 hodín, teraz zvládneme za 16. Systém je intuitívny a spoľahlivý.</p>
+          <div class="card-footer">
+            <div>
+              <p class="card-title">Martina Guthová</p>
+              <p class="card-subtitle">Vedúca stravovacieho oddelenia</p>
+            </div>
+            <img src="https://fnnitra.sk/wp-content/uploads/fn_nitra_logo.svg" height="24" alt="FN Nitra" />
+          </div>
+        </div>
+        <div class="cards">
+          <p class="cards-desc">Dochádzkový systém nám ušetrí mesačne 30 hodín. Najväčšou výhodou je plánovanie trojzmennej.</p>
+          <div class="card-footer">
+            <div>
+              <p class="card-title">Marcela Orthová</p>
+              <p class="card-subtitle">Zástupkyňa veliteľa</p>
+            </div>
+            <img src="MPVK.jpg" height="24" alt="MPVK" />
+          </div>
+        </div>
+        <div class="cards">
+          <p class="cards-desc">Riešenie na mieru sme vybrali vo výberovom konaní a obsahuje dochádzku a správu pobočiek.</p>
+          <div class="card-footer">
+            <div>
+              <p class="card-title">Peter Ligáč</p>
+              <p class="card-subtitle">Vedúci IT oddelenia</p>
+            </div>
+            <img src="med-art-logo.svg" height="24" alt="MED-ART" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Script IDE na konci pred </body> -->
+  <script src="Skusenosti.js"></script>
+</body>
+</html>
