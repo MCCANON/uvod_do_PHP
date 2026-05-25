@@ -1,5 +1,5 @@
 <?php
-$config = json_decode(file_get_contents('../config/config.json'), true);
+$config = json_decode(file_get_contents('config.json'), true);
 define('DB_HOST', $config['DB_HOST']);
 define('DB_USER', $config['DB_USER']);
 define('DB_PASS', $config['DB_PASS']);
