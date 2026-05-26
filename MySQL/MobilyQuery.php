@@ -25,7 +25,7 @@ class MobilyQuery
 
     private function updateProdukt(Mobily $produkt)
     {
-        $sql = "UPDATE mobily SET nazov='{$produkt->nazov}', cena='{$produkt->cena}', model='{$produkt->model}' WHERE id_mobily={$produkt->ID}";
+        $sql = "UPDATE mobily SET nazov='{$produkt->nazov}', cena='{$produkt->cena}', model='{$produkt->model}' WHERE ID={$produkt->ID}";
         
         mysqli_query($this->conn, $sql);
     }
@@ -44,8 +44,8 @@ class MobilyQuery
     }
     public function saveProdukt(Mobily $produkt)
     {
-            $this->insertProdukt($produkt);
-            return;            
+        $this->insertProdukt($produkt);
+                        
         // updatni existujuci zaznam
         $this->updateProdukt($produkt);
     }
@@ -119,6 +119,18 @@ class MobilyQuery
 
         if ($this->conn->query($sql) !== true) {
             throw new InvalidArgumentException("Nepodarilo sa vymazat kategoriu");
+        }
+
+        $produkt->isDeleted = true;
+    }
+    public function editProdukt(Mobily $produkt, $conn):void
+    {
+        $produkt = $this->getProduktById($produkt->ID);
+
+        $sql = "UPDATE mobily SET nazov='{$produkt->nazov}', cena='{$produkt->cena}', model='{$produkt->model}' WHERE ID={$produkt->ID}";
+
+        if ($this->conn->query($sql) !== true) {
+            throw new InvalidArgumentException("Nepodarilo sa upravit mobil");
         }
 
         $produkt->isDeleted = true;

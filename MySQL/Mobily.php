@@ -67,5 +67,15 @@ class Mobily
       }
       return $editErr;
     }
+    public function edit(mysqli $conn = null):string
+    {
+        try{
+            MobilyQuery::create($conn)->updateProdukt($this);
+            $editErr = "";
+        } catch (mysqli_sql_exception $e) {
+            $editErr = "Chyba: " . $e->getMessage();
+        }
+        return $editErr;
+    }
 }
 ?>

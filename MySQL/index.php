@@ -46,6 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
             exit;
         }
     }
+    if($_POST['action'] === 'edit' && isset($_POST['id'])){
+        $id = (int)$_POST['id'];
+        $_SESSION['edit_id'] = $id;
+        header("Location: editIndex.php");
+        exit;
+    }
 }
 
 ?>
@@ -101,6 +107,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])) {
                         <input type="hidden" name="action" value="delete">
                         <input type="hidden" name="id" value="<?= $produkt->ID ?>">
                         <button class ="delete"type="submit">Odstrániť</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="index.php" method="POST" 
+                        onsubmit="return confirm('Upraviť tento mobil?')">
+                        <input type="hidden" name="action" value="edit">
+                        <input type="hidden" name="id" value="<?= $produkt->ID ?>">
+                        <button class ="edit"type="submit">Upraviť</button>
                     </form>
                 </td>
             </tr>

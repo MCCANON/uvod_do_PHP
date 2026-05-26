@@ -40,6 +40,11 @@ function isLocationActive(string $location): string
         header { text-align: center; margin-bottom: 30px; margin-top: 0px; width: 100%; background-color: #a6a6a6; padding: 10px 0; }
         .btn-header { background-color: #7f7f7f; color: white; width: 25%; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: background 0.2s; margin: 20px; }
         .btn-header-on { background-color: #4a4a4a; color: white; width: 25%; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: background 0.2s; margin: 20px; }
+        .edit { background-color: #ffc107; }
+        input[type="text"], input[type="number"], select { 
+            width: 100%; padding: 10px; border: 1px solid #ccc; 
+            border-radius: 5px; box-sizing: border-box; 
+        }
     </style>
 </head>
 
