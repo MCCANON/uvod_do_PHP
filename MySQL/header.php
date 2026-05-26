@@ -34,7 +34,7 @@ function isLocationActive(string $location): string
         button { width: 100%; background-color: #007bff; color: white; padding: 12px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: background 0.2s; }
         button:hover { background-color: #0056b3; }
         .error-box { background-color: #f8d7da; color: #721c24; padding: 12px; border-radius: 5px; margin-bottom: 20px; border: 1px solid #f5c6cb; font-weight: bold; }
-        table { max-width: 1000px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin: 0 auto; margin-top: 30px; width: 80%; font-weight: bold; }
+        table { max-width: 1000px; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin: 30px auto;width: 80%; font-weight: bold; }
         .delete { background-color: #dc3545; }
         button.delete:hover { background-color: #ae1f2d; }
         header { text-align: center; margin-bottom: 30px; margin-top: 0px; width: 100%; background-color: #a6a6a6; padding: 10px 0; }
