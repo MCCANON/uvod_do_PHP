@@ -1,16 +1,12 @@
 <?php
 require_once "DB.php"; 
-require_once "./MobilyQuery.php";
+require_once "./NayQuery.php";
 
-class Mobily
+class Nay
 {
     public int $ID;
 
-    public string $nazov;
-    public float $cena;
-    public string $model;
-    public int $nay_ID;
-    public string $mesto = '';
+    public string $mesto;
 
 
     /** @var bool ci uz dany objekt bol odstraneny z DB */
@@ -26,25 +22,25 @@ class Mobily
     public function save(mysqli $conn = null):string
     {
         
-        if(empty($this->nazov) || empty($this ->cena)){
-            $editErr = "Pole/Polia nemôžu byť prázdne!";
+        if(empty($this->mesto)){
+            $editErr = "Pole nemôže byť prázdne!";
         }else{
             $editErr = '';
         }
-        $produkty = MobilyQuery::create()->getAllProdukt();
-        foreach($produkty as $produkt){
-        if($produkt->nazov === $this->nazov && $produkt->cena === $this->cena && $produkt->model === $this->model && $this->nay_ID === $produkt->nay_ID){
-          $editErr = "Názov už existuje.";
-          break;
-          }
+        $produkty = NayQuery::create()->getAllProdukt();
+         foreach($produkty as $produkt){
+            if($produkt->mesto === $this->mesto){
+                $editErr = "Mesto už existuje.";
+                break;
+            }
         }
         if(empty($editErr)){
           try {
-            MobilyQuery::create($conn)
+            NayQuery::create($conn)
                 ->saveProdukt($this);
           } catch (mysqli_sql_exception $e) {
             if ($e->getCode() == 1062) { // Duplicate key error code
-              $editErr = "Názov už existuje.";
+              $editErr = "Mesto už existuje.";
             } else {
               $editErr = "Chyba: " . $e->getMessage();
             }
@@ -60,7 +56,7 @@ class Mobily
     public function delete(mysqli $conn = null):string
     {
       try{
-        MobilyQuery::create($conn)->deleteProdukt($this);
+        NayQuery::create($conn)->deleteProdukt($this);
         $editErr = "";
       }catch(mysqli_sql_exception $e){
         $editErr = "Chyba: Existujú objednávky používajúce tento produkt. Ostránenenie nie je možné";

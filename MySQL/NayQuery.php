@@ -1,6 +1,6 @@
 <?php 
 
-class MobilyQuery
+class NayQuery
 {
     // atribut instancie triedy
     private mysqli $conn;
@@ -23,17 +23,17 @@ class MobilyQuery
         return new self($conn);
     }
 
-    private function updateProdukt(Mobily $produkt)
+    private function updateProdukt(Nay $produkt)
     {
-        $sql = "UPDATE mobily SET nazov='{$produkt->nazov}', cena='{$produkt->cena}', model='{$produkt->model}' WHERE id_mobily={$produkt->ID}";
+        $sql = "UPDATE nay SET mesto='{$produkt->mesto}' WHERE id_nay={$produkt->ID}";
         
         mysqli_query($this->conn, $sql);
     }
 
-    private function insertProdukt(Mobily $produkt)
+    private function insertProdukt(Nay $produkt)
     {
         // vloz novy zaznam
-        $sql = "INSERT INTO mobily (`nazov`, `cena`, `model`, `nay_ID`) VALUES ('{$produkt->nazov}','{$produkt->cena}','{$produkt->model}','{$produkt->nay_ID}')";
+        $sql = "INSERT INTO nay (`mesto`) VALUES ('{$produkt->mesto}')";
 
         if ($this->conn->query($sql) !== true) {
             throw new InvalidArgumentException("Nepodarilo sa vlozit novy produkt");
@@ -42,7 +42,7 @@ class MobilyQuery
         // do produkt vlozime nove id 
         $produkt->ID = $this->conn->insert_id;
     }
-    public function saveProdukt(Mobily $produkt)
+    public function saveProdukt(Nay $produkt)
     {
             $this->insertProdukt($produkt);
             return;            
@@ -51,11 +51,11 @@ class MobilyQuery
     }
 
     /**
-     * @return Mobily[]
+     * @return Nay[]
      */
     public function getAllProdukt() : array
     {
-        $sql = 'SELECT mobily.*, nay.mesto FROM mobily LEFT JOIN nay ON mobily.nay_ID = nay.ID';
+        $sql = 'SELECT * FROM nay';
         $result = mysqli_query($this->conn, $sql);
 
         if (!$result) {
@@ -63,7 +63,7 @@ class MobilyQuery
         }
 
         $produkty = [];
-        while ($row = $result->fetch_object('Mobily')) {
+        while ($row = $result->fetch_object('Nay')) {
             $produkty[] = $row;
         }
 
@@ -71,9 +71,9 @@ class MobilyQuery
 
     }
 
-    public function getProduktById(int $id_produktu):Mobily
+    public function getProduktById(int $id_produktu):Nay
     {
-        $sql = "SELECT * FROM mobily where ID = $id_produktu ";
+        $sql = "SELECT * FROM nay where ID = $id_produktu ";
         $result = mysqli_query($this->conn, $sql);
 
         if (!$result) {
@@ -87,35 +87,32 @@ class MobilyQuery
         }
 
         $produktRaw = $produktyRaw[0];
-        $produkt = new Mobily();
+        $produkt = new Nay();
 
         $produkt->ID = $produktRaw['ID'];
-        $produkt->nazov = $produktRaw['nazov'];
-        $produkt->cena = $produktRaw['cena'];
-        $produkt->model = $produktRaw['model'];
-        $produkt->nay_ID = $produktRaw['nay_ID'];
+        $produkt->mesto = $produktRaw['mesto'];
 
         return $produkt;
     }
 
-    public function createProdukt(int $id_produktu=0):Mobily
+    public function createProdukt(int $id_produktu=0):Nay
     {
         $produkt = null;
         try{
             $produkt = $this->getProduktById($id_produktu);
         }catch(InvalidArgumentException $e){
-            $produkt = new Mobily();
+            $produkt = new Nay();
             $produkt->ID = $id_produktu;
         }
 
         return $produkt;
     }
 
-    public function deleteProdukt(Mobily $produkt, $conn):void
+    public function deleteProdukt(Nay $produkt, $conn):void
     {
         $produkt = $this->getProduktById($produkt->ID);
 
-        $sql = "DELETE FROM mobily WHERE ID={$produkt->ID}";
+        $sql = "DELETE FROM nay WHERE ID={$produkt->ID}";
 
         if ($this->conn->query($sql) !== true) {
             throw new InvalidArgumentException("Nepodarilo sa vymazat kategoriu");
